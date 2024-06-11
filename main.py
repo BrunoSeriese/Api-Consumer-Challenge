@@ -1,13 +1,7 @@
 import httpx
 
-hosts = [
-    'node1.example.com',
-    'node2.example.com',
-    'node3.example.com'
-]
-
-
-def createGroup(groupId):
+def createGroup(groupId,hosts):
+    responseMsg = ""
     for host in hosts:
         try:
             data = {'groupId': groupId}
@@ -17,13 +11,15 @@ def createGroup(groupId):
             statusCode = response.status_code
 
             if statusCode == 201:
-                print(f"group created with ID:{groupId}")
+                responseMsg = "201 CREATED"
             else:
-                print(f"group creation failed with statuscode:{statusCode}")
+                return "400 - Bad request. Perhaps the object exists."
         except httpx.HTTPError as error:
             print(error)
+    return responseMsg
 
-def deleteGroup(groupId):
+def deleteGroup(groupId,hosts):
+    responseMsg = ""
     for host in hosts:
         try:
             data = {'groupId': groupId}
@@ -32,14 +28,16 @@ def deleteGroup(groupId):
             response = httpx.delete(url,json=data)
             statusCode = response.status_code
 
-            if statusCode == 200:
-                print(f"group deleted with ID:{groupId}")
+            if statusCode == 204:
+                responseMsg =  "200 OK"
             else:
-                print(f"group deleten failed with statuscode:{statusCode}")
+                return "404 NOT FOUND"
         except httpx.HTTPError as error:
             print(error)
+    return responseMsg
             
-def getGroup(groupId):
+def getGroup(groupId,hosts):
+    responseMsg = ""
     for host in hosts:
         try:
          
@@ -49,8 +47,9 @@ def getGroup(groupId):
             statusCode = response.status_code
 
             if statusCode == 200:
-                print(f"group found with ID:{groupId}")
+                responseMsg = {'groupId': groupId}
             else:
-                print(f"group creation failed with statuscode:{statusCode}")
+                return "404 NOT FOUND"
         except httpx.HTTPError as error:
             print(error)
+    return responseMsg
