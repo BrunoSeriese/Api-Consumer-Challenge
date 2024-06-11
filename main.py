@@ -11,7 +11,7 @@ hosts = [
 
 def createGroup():
     print("create group")
-def delete_group():
+def deleteGroup():
     print("delete group")
-def get_group():
+def getGroup():
     print('get group')
