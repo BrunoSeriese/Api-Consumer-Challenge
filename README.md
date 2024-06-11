@@ -2,6 +2,8 @@
 
 ## Interpretation
 
+For this coding challenge I have made a few assumptions for the implementation, namely:
+
 I'm assuming that for every function I will have a list of hosts that i will have to loop over. So in my implementation i use a for loop over the amount of hosts.
 I assumed that a rollback would only be neccesary on create and delete actions, and so I have not implemented this for the getGroup()
 Since i do not have access to the API i assumed that i should mock the API for the testing with pytest.
