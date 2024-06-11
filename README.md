@@ -6,7 +6,11 @@ I'm assuming that for every function I will have a list of hosts that i will hav
 I assumed that a rollback would only be neccesary on create and delete actions, and so I have not implemented this for the getGroup()
 Since i do not have access to the API i assumed that i should mock the API for the testing with pytest.
 
-I assumed it would be good to add docstrings to clarify my functions and to use a formatter to make it in line with pep8
+I wasn't sure what to do with the main execution of main.py since there isnt an actual API, so for now i just let it print something to showcase that it can run. The testing should showcase that the functions actually work.
+
+
+I assumed it would be good to add docstrings to clarify my functions so that it is easy to understand, and to use a formatter to make it in line with pep8
+
 
 ## Requirements
 
