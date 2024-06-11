@@ -53,3 +53,7 @@ def getGroup(groupId,hosts):
         except httpx.HTTPError as error:
             print(error)
     return responseMsg
+
+
+if __name__ == '__main__':
+    print("code is running")
